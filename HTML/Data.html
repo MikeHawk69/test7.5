@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>@import "../CSS/dataStyle.css";</style>
+    <script type="text/javascript" src="../JS/data.js"></script>
+
+    <title>Surv-it: Data</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Surv-It" src="../Images/Surv-it-Logo.png" height="40" width="80"/>
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li class="active"><a href="Data.html">Data</a></li>           <!--only part that changes-->
+            <li><a href="../Surveys/Surveys.html">Surveys</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="Profile.html"><span class="glyphicon glyphicon-cog"></span> Profile Settings </a></li>
+            <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h3 style="text-align: center">You currently have no data to analyze. Create a survey and send it to your customers to receive data or wait until your customers have filled out and submitted the survey </h3>
+
+<div id="showcase" style="display:flex;border-radius:10px;background:white;width:95%;padding:5px;margin-left:2.5%;margin-bottom:15px">
+    <div style="border-radius:10px;text-align:center;width:22%;margin:5px;padding:5px;border:solid 1px lightgray">
+        <h4>Options</h4>
+        <p align="left">Product:
+            <select>
+                <option>No Products</option>
+            </select>
+        </p>
+        <p align="left"> View:
+            <select>
+                <option value="line">Line Graph</option>
+                <option value="bar">Bar Graph</option>
+                <option value="pie">Pie Chart</option>
+            </select>
+        </p>
+        <p align="left"> Data:
+            <select>
+                <option value="satisfaction">Customer Satisfaction</option>
+                <option value="question">Question Answers</option>
+                <option value="demographics">Response by Demographic</option>
+                <option value="region">Response by Region</option>
+            </select>
+        </p>
+    </div>
+
+    <div class="imageBox" style="border-radius:10px;text-align:center;width:80%;border:solid 1px lightgray;margin:5px;padding:5px">
+        <h3 align="center">Product Data</h3>
+        <p>data goes here</p>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6" style="background-color: ">
+
+            <div class="btn-group-vertical btn-group-lg">
+                <button type="button" class="btn btn-success">Show Picture</button>
+                <button type="button" class="btn btn-primary" onClick="location.href='../HTML/dataPage.html'">Data</button>
+                <button type="button" class="btn btn-warning">Hide Product</button>
+            </div>
+            <div>
+                <div class="prod_view">
+                    <div class="boxclass">
+                        <output id="list"></output>
+                    </div>
+                    <div class="descriptionClass">*Some information about this product*</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script>
+
+    if(localStorage.description) {
+        $(".descriptionClass").html(localStorage.description);
+    }
+
+if(localStorage.img) {
+    var span = document.createElement('span');
+    span.innerHTML = ['<img class="thumb" src="', localStorage.img,
+        '" title="test"/>'].join('');
+
+    document.getElementById('list').insertBefore(span, null);
+}
+
+
+
+
+</script>
+
+</body>
+</html>

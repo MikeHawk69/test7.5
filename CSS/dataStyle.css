@@ -1,0 +1,96 @@
+body{
+    margin:0;
+    padding-top: 65px;
+    background-color: rgb(232,232,232);
+
+}
+div.horSpace {
+    height:5px;
+    width:100%;
+}
+div.verSpace {
+    width:5px;
+    height:100%;
+}
+
+nav.directory{
+    background-color: Navy;
+    color:white;
+    height:50px;
+    width:100%;
+    padding-top:10px;
+    margin:0;
+    display:flex;
+}
+a.logo:hover{
+    background-color: steelblue;
+}
+a.nav {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    height: 50px;
+    text-decoration: none;
+    position: relative;
+    top: -15px;
+}
+a.nav:hover {
+    background-color: steelblue;
+}
+
+.btn-group-vertical{
+    border: 2px solid black;
+    border-right: 1px;
+    border-radius: 10px;
+}
+.col-md-6 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+
+.prod_view {
+    height: 100%;
+    background-color: rgb(216,216,216);
+    display: flex;
+    justify-content: flex-start;
+    border: solid;
+    border-radius: 8px;
+    overflow: auto;
+
+
+}
+.col-md-6 > div:last-child {
+    width: 50%;
+}
+
+.boxclass{
+    width: 50%;
+}
+
+.descriptionClass{
+    height: 95%;
+    width: 50%;
+    word-wrap: break-word;
+}
+.thumb {
+    height: 95%;
+    width: 95%;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+
+
+
+
+
+
+
+
+

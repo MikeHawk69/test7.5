@@ -1,0 +1,17 @@
+body{margin:0; padding-top: 65px}
+div.horSpace {
+    height:5px;
+    width:100%;
+}
+div.verSpace {
+    width:5px;
+    height:100%;
+}
+
+div.survey {
+    width:100%;
+    height:75px;
+    background:green;
+    border-radius:10px;
+    margin-bottom:10px;
+}

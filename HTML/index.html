@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>@import "../CSS/homeStyle.css";</style>
+    <title>Surv-it: info page</title>
+</head>
+<body style="background:lightgreen">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Surv-It" src="../Images/Surv-it-Logo.png" height="40" width="80"/>
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="logLink"><span class="glyphicon glyphicon-user"></span> Log In </a></li>
+            <li><a href="#" id="signLink"><span class="glyphicon glyphicon-plus"></span> Sign Up </a></li>
+        </ul>
+    </div>
+</nav>
+
+<div>
+    <!-- TODO finish info page -->
+    <h1>WELCOME TO SURV IT!</h1>
+    <h2>Survey your customers to serve your customers.</h2>
+</div>
+
+<div id="logMod" class="modal">
+    <div class="modal-content" style="width:50%;margin-left:25%;margin-top:10%">
+        <div class="modal-header" style="background: green; color: white">
+            <span class="close">&times;</span>
+            <h4 style="text-align: center">Log In</h4>
+        </div>
+        <div class="modal-body">
+            <p style="color:red">CLICK X CLOSE</p>
+            <a href="Home.html">CLICK TO SKIP FOR TESTING</a>
+            <form style="text-align: center;padding:10px" id="logForm">
+                Username: <input type="text" value="username"><br>
+                Password: <input style="margin-top:5px" type="password" value="password"><br>
+                <input style="margin-top:5px" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="signMod" class="modal">
+    <div class="modal-content" style="width:50%;margin-left:25%;margin-top:10%">
+        <div class="modal-header" style="background: green; color: white">
+            <span class="close">&times;</span>
+            <h4 style="text-align: center">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+            <p style="color:red">CLICK OUTSIDE WINDOW TO CLOSE</p>
+            <form style="align-content: left;text-align: center;padding:10px" id="signForm">
+                Company: <input type="text" value="company"><br>
+                Email: <input style="margin-top:5px" type="text" value="email"><br>
+                Username: <input style="margin-top:5px" type="text" value="username"><br>
+                Password: <input style="margin-top:5px" type="password" value="password"><br>
+                Verify Password: <input style="margin-top:5px" type="password" value="password"><br>
+                <input style="margin-top:10px" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var modal1 = document.getElementById('logMod');
+    var btn1 = document.getElementById("logLink");
+    var modal2 = document.getElementById('signMod');
+    var btn2 = document.getElementById("signLink");
+    var span = document.getElementsByClassName("close")[0];
+    btn1.onclick = function() {
+        modal1.style.display = "block";
+    }
+    span.onclick = function() {
+        modal1.style.display = "none";
+        modal2.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+    }
+    btn2.onclick = function() {
+        modal2.style.display = "block";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

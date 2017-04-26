@@ -1,0 +1,255 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>@import "../CSS/createSurvey.css";</style>
+    <script src="../JS/createSurvey.js"></script>
+    <title>Surv-it: Create a Survey</title>
+</head>
+<body style="background: lightgreen">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Surv-It" src="../Images/Surv-it-Logo.png" height="40" width="80"/>
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="../HTML/Home.html">Home</a></li><!--only part that changes-->
+            <li><a href="../HTML/Products.html">Products</a></li>
+            <li><a href="../HTML/Data.html">Data</a></li>
+            <li><a href="Surveys.html">Surveys</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../HTML/Profile.html"><span class="glyphicon glyphicon-cog"></span> Profile Settings </a></li>
+            <!-- TODO: Are you sure you want to leave popup -->
+            <li><a href="../HTML/index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- TODO: add functionality to add tool options -->
+<div class="toolbar">
+    <div style="border-bottom:solid 1px lightgray"><h4 style="text-align:center">Toolbar</h4></div>
+    <div>
+        <div class="slider" name="productInfo">Product Information</div>
+        <div class="toolkit" id="productInfo">
+            <form style="text-align: center;padding:10px" id="productForm">
+                <p>Please select the product you wish to create a survey about or create a new product to use. </p>
+                <select style="width:80%;margin-bottom:5px">
+                    <option>No Products</option>
+                    <!--TODO link to product databases -->
+                </select>
+                <button id="myBtn" type="button" class = "optionButton">New Product</button>
+                <button id="applyButton" type="button" class = "optionButton">Apply</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="slider" name="surveyInfo">Survey info</div>
+    <div class="toolkit" id="surveyInfo">
+        <form id="surveyForm">
+            <p class="optionHeading">Survey Information</p>
+            Name: <input id="surName" style="width:98%" type="text" value="Insert name here.">
+            <div class="horSpace"></div>
+            <input type="button" onclick="addToSurvey('surveyForm', 'surveyInfo')" value="add" class="optionButton">
+            <input type="reset" class="optionButton">
+        </form>
+    </div>
+
+    <div class="slider" name="demographics">Demographics</div>
+    <div class="toolkit" id="demographics">
+        <form style="text-align: center;margin:0;padding:10px" id="DemoForm">
+            <p> Do you wish to inquire about the customer's age?
+                <input name="age" type="radio">yes</input>
+                <input name="age" type="radio" checked="checked">no</input></p>
+            <p> Do you wish to inquire about the customer's gender?
+                <input name="gender" type="radio">yes</input>
+                <input name="gender" type="radio" checked="checked">no</input></p>
+            <p> Do you wish to inquire about the customer's ethnicity?
+                <input name="race" type="radio">yes</input>
+                <input name="race" type="radio" checked="checked">no</input></p>
+            <p> Do you wish to inquire about the customer's religion?
+                <input name="religion" type="radio">yes</input>
+                <input name="religion" type="radio" checked="checked">no</input></p>
+            <p> Do you wish to inquire about the customer's location?
+                <input name="location" type="radio">yes</input>
+                <input name="location" type="radio" checked="checked">no</input></p>
+            <button type="button" class = "optionButton" name="">Apply</button>
+        </form>
+    </div>
+
+    <div class="slider" name="layout">Layout</div>
+    <div class="toolkit" id="layout">
+        <div class="tool" name="layoutColumns"> Columns</div>
+        <div class="toolOptions" id="layoutColumns">
+            <form style="text-align:center">
+                <p class="optionHeading">Columns</p>
+                <div class="horSpace"></div>
+                <p style="color:white;width:55%;float:left">How many columns do you want?</p>
+                <input style="width:35%;margin-top:15%" type="number" min="1" max="3" value="0" step="1">
+                <div class="horSpace"></div>
+                <button class="optionButton">Add</button>
+            </form>
+        </div>
+        <div class="tool" name="layoutColors"> Colors</div> <!--todo-->
+        <div class="toolOptions" id="layoutColors">
+            <form style="text-align: center">
+                <p class="optionHeading">Colors</p>
+                <div class="horSpace"></div>
+                <p style="color:white">click to change color</p>
+                <input type="color" draggable=true style="background-color:green;height:30px;width:70%;border:none"/>
+                <div class="horSpace"></div>
+                <p style="color:white">Drag to element to change color</p>
+                <!-- TODO: add dragging functionality-->
+            </form>
+        </div>
+        <div class="tool" name="layoutPages"> Pages</div> <!--todo-->
+        <div class="toolOptions" id="layoutPages">
+            <form>
+                <p class="optionHeading">Pages</p>
+                <p style="color:white;background-color:darkgreen;padding:5px" draggable="true">Drag this sentence to
+                    insert a page break.</p>
+                <!--TODO:ADD PAGEBREAK FUNCTIONALITY-->
+            </form>
+        </div>
+    </div>
+
+    <div class="slider" name="question">Question</div>
+    <div class="toolkit" id="question">
+        <div class="tool" name="sTextOption"> Single Text</div>
+        <div class="toolOptions" id="sTextOption">
+            <form id="stForm">
+                <p class="optionHeading">Single Text</p>
+                Question: <input id="stQuestion" style="width:98%" type="text" value="Input question here.">
+                <div class="horSpace"></div>
+                <input type="button" onclick="addToSurvey('stForm', 'sTextOption')" value="Add" class="optionButton">
+                <input type="reset" class="optionButton">
+            </form>
+        </div>
+        <div class="tool" name="tbOption"> Text Box</div>
+        <div class="toolOptions" id="tbOption">
+            <form id="tbForm" >
+                <p class="optionHeading">Text Box</p>
+                Question:
+                <input id="tbQuestion" style="width:98%" type="text" value="Input question here."/>
+                <div class="horSpace"></div>
+                <input type="button" onclick="addToSurvey('tbForm', 'tbOption')" value="Add" class="optionButton"/>
+                <input type="reset" class="optionButton"/>
+            </form>
+        </div>
+        <div class="tool" name="radioOption"> Select One</div>
+        <div class="toolOptions" id="radioOption">
+            <form id="rdoForm" >
+                <p class="optionHeading">Select One</p>
+                Question:
+                <input id="rdoQuestion" style="width:98%" type="text" value="Input question here."/>
+                <div class="horSpace"></div>
+                <button type="button" class="optionButton" onclick="addOption('rdoForm')">+</button>
+                <button type="button" class="optionButton" onclick="remOption('rdoForm')">-</button>
+                <div class="horSpace"></div>
+                <input id=rtb1 style="width:98%" type="text" value="Option 1"/>
+                <div class="horSpace"></div>
+                <input id="rdoAdd" type="button" onclick="addToSurvey('rdoForm', 'radioOption')" value="Add" class="optionButton"/>
+                <input type="button" onclick="resetPan('rdoForm')" class="optionButton" value="Reset"/>
+            </form>
+        </div>
+        <div class="tool" name="checkOption"> Select Multiple</div>
+        <div class="toolOptions" id="checkOption">
+            <form id="chkForm" >
+                <p class="optionHeading">Select Multiple</p>
+                Question:
+                <input id="chkQuestion" style="width:98%" type="text" value="Input question here."/>
+                <div class="horSpace"></div>
+                <button type="button" class="optionButton" onclick="addOption('chkForm')">+</button>
+                <button type="button" class="optionButton" onclick="remOption('chkForm')">-</button>
+                <div class="horSpace"></div>
+                <input id=ctb1 style="width:98%" type="text" value="Option 1"/>
+                <div class="horSpace"></div>
+                <input id="chkAdd" type="button" class="optionButton" onclick="addToSurvey('chkForm', 'checkOption')" value="Add"/>
+                <input type="button" onclick="resetPan('chkForm')" class="optionButton" value="Reset"/>
+            </form>
+        </div>
+        <div class="tool" name="ddOption"> Dropdown Menu</div>
+        <div class="toolOptions" id="ddOption">
+            <form id="ddForm" >
+                <!--TODO: change dropdown addition stuff-->
+                <p class="optionHeading">Dropdown Menu</p>
+                Question:
+                <input id="ddQuestion" style="width:98%" type="text" value="Input question here."/>
+                <div class="horSpace"></div>
+                <button type="button" class="optionButton" onclick="addOption('ddForm')">+</button>
+                <button type="button" class="optionButton" onclick="remOption('ddForm')">-</button>
+                <div class="horSpace"></div>
+                <input id=dtb1 style="width:98%" type="text" value="Option 1"/>
+                <div class="horSpace"></div>
+                <input id="ddAdd" type="button" class="optionButton" onclick="addToSurvey('ddForm', 'ddOption')" value="Add"/>
+                <input type="button" onclick="resetPan('ddForm')" class="optionButton" value="Reset"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- TODO: Add Functionality to edit or remove questions after theyre added -->
+
+<a href= "Survey2.html" >Preview</a><!--
+<button onclick="myfun()">CLick here</button>
+<button onclick="update()">update</button>
+Name: <input id="n" style="width:98%" type="text" value="Insert name here.">
+<div id="result"></div>
+-->
+<div>
+    <h2 style="text-align: center">Survey Preview</h2>
+    <form id="survey" class="survey">
+    </form>
+</div>
+
+<!-- Modal script and design -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content" style="width:50%;margin-left:25%;margin-top:10%">
+        <div class="modal-header" style="background: green; color: white">
+            <span class="close">&times;</span>
+            <h4 style="text-align: center">New Product</h4>
+        </div>
+        <div class="modal-body">
+            <form style="align-content: center;text-align: center;padding:10px" id="headerForm">
+                <p> Name: <input type="text" style="width:70%" placeholder="Product Name Here"/></p>
+                <p>Picture: <input type="file" accept="image/*" style="width:70%"/></p>
+                <p>Description: <textarea style="width:90%;height:48px;resize:none" placeholder="Product Description Here"></textarea></p>
+                <button id="headerButton" style = "background-color: green" type="button" class = "btn btn-success">Apply</button>
+                <!-- TODO give functionality to product button -->
+                <!--using jquery???? -->
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // When the user clicks the button, open the modal
+    document.getElementById("myBtn").onclick = function() {
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    document.getElementsByClassName("close")[0].onclick = function() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('myModal')) {
+            document.getElementById('myModal').style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
+

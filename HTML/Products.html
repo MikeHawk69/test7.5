@@ -1,0 +1,223 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>@import "../CSS/productsStyle.css";</style>
+    <title>Surv-it: Products</title>
+
+</head>
+
+<body style="background: lightgreen">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Surv-It" src="../Images/Surv-it-Logo.png" height="40" width="80"/>
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="Home.html">Home</a></li>
+            <li class="active"><a href="Products.html">Products</a></li>
+            <li><a href="Data.html">Data</a></li>
+            <li><a href="../Surveys/Surveys.html">Surveys</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="Profile.html"><span class="glyphicon glyphicon-cog"></span> Profile Settings </a></li>
+            <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="padding-top: 60px">
+    <a href= "../Products/Product2.html" >Preview</a>
+    <div class="panel panel-default" style="background: rgb(250,250,250)">
+        <div class="panel-heading" style="text-align: center">Products List</div>
+
+        <h3 style="text-align: center"> You currently have no products. To create a new product, select "New Product" below.</h3>
+        <div style="text-align: center; padding: 20px">
+            <button class="btn btn-success" id="myBtn">New Product</button>
+        </div>
+
+        <div id="productDescription" class="panel panel-default" style="margin: 40px">
+            <div class="panel-heading" style="padding-bottom: 0"><p id="title2" style="text-align:left">Product Name<span style="float:right;">Date added: Some date</span></p></div>
+            <div class="row" style="padding: 30px">
+                <div class="col-md-6">
+                    <output id="list"></output>
+                </div>
+
+                <div class="col-md-6">
+                    <p id="desc2" style="text-align:left">Description: Some Description</p>
+                        <span class="edit_delete" style="float: right; padding: 0px">
+                            <button onclick="myEdit()" class="btn btn-success" style="margin-left: 20px; width: 78px; padding: 10px">Edit</button>
+                            <button onclick="myDelete()" class="btn btn-danger" style="margin-left: 20px; width: 78px; padding: 10px">Delete</button>
+
+                        </span>
+                </div>
+            </div>
+            <p class="row" style="margin-left: 10px">Number of surveys:  #</p>
+            <p class="row" style="margin-left: 10px"><b>Surveys</b></p>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content" style="width:50%;margin-left:25%;margin-top:10%">
+        <div class="modal-header" style="background: green; color: white">
+            <span class="close">&times;</span>
+            <h4 style="text-align: center">New Product</h4>
+        </div>
+        <div class="modal-body">
+            <form style="align-content: center;text-align: center;padding:10px" id="headerForm">
+                <p> Name: <input id="name2" type="text" style="width:70%" placeholder="Product Name Here"/></p>
+                <p>Picture: <input type="file" id="files" name="files[]" accept="image/*" style="width:70%"/></p>
+                <p>Description: <textarea id="description2" style="width:90%;height:48px;resize:none" placeholder="Product Description Here"></textarea></p>
+                <button id="headerButton" style = "background-color: green" type="button" class = "btn btn-success">Apply</button>
+                <!-- TODO give functionality to product button -->
+                <!--using jquery???? -->
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    function myEdit() {
+        var i=0;
+        while(localStorage.key(i)){
+            localStorage.removeItem(localStorage.key(i));
+            i++;
+        }
+    }
+    function myDelete() {
+        // $("#productDescription").slideUp("slow");
+    }
+    document.onreadystatechange = function () {
+        if (document.readyState == "interactive") {
+            updateProduct();
+        }
+    }
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Get the apply button that saves modal information
+    var apply = document.getElementById('headerButton');
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+
+
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    //when the user clicks "Apply" save items added in modal and load them into <div>
+    apply.onclick = function () {
+        var name = document.getElementById("name2").value;
+        var description = document.getElementById("description2").value;
+        localStorage.setItem("name", name);
+        localStorage.setItem("description", description);
+
+        updateProduct();
+    }
+
+    function updateProduct(){
+        $("#title2").html(localStorage.name);
+        $("#desc2").html(localStorage.description);
+        modal.style.display = "none";
+    }
+
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = files[i]; i++) {
+
+            // Only process image files.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    // Render thumbnail.
+                    var span = document.createElement('span');
+                    span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                        '" title="', escape(theFile.name), '"/>'].join('');
+
+                    document.getElementById('list').insertBefore(span,null);
+                    localStorage.setItem('img', e.target.result);
+
+                };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+        }
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+    if(localStorage.img) {
+        var span = document.createElement('span');
+        span.innerHTML = ['<img class="thumb" src="', localStorage.img,
+            '" title="test"/>'].join('');
+
+        document.getElementById('list').insertBefore(span, null);
+
+
+    }
+
+    function newProduct(){
+        var temp = localStorage.getItem("name") + "";
+        localStorage.setItem("productNames", localStorage.getItem("productNames") + " " + temp);
+    }
+
+</script>
+
+
+</body>
+
+</html>

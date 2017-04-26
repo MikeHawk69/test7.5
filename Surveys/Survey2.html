@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>@import "../CSS/createSurvey.css";</style>
+    <script src="../JS/createSurvey.js"></script>
+    <title>Surv-it: Create a Survey</title>
+</head>
+<body style="background: lightgreen">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Surv-It" src="../Images/Surv-it-Logo.png" height="40" width="80"/>
+            </a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="../HTML/Home.html">Home</a></li>
+            <li><a href="../HTML/Products.html">Products</a></li>
+            <li><a href="../HTML/Data.html">Data</a></li>
+            <li class="active"><a href="Surveys.html">Surveys</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../HTML/Profile.html"><span class="glyphicon glyphicon-cog"></span> Settings </a></li>
+            <li><a href="../HTML/index.html><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+        </ul>
+    </div>
+</nav>
+<div class = "panel panel-default"
+     style=" border-radius:10px;background: rgb(250,250,250);float:left;margin: 10px; height: 925px; width: 98%">
+    <div class="panel-heading" style="text-align: center"><h4>Survey 2</h4></div>
+    <div style="padding:5px;height:90%;overflow-y:scroll">
+        <a href="createSurvey.html">go back</a>
+        <button onclick="handleText()">click me to load</button>
+        <button onclick="resetSaved()">click me to reset</button>
+        <div id="result"></div>
+        <!-- displays recent surveys -->
+    </div>
+</div>
+</body>
+</html>
